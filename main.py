@@ -1,5 +1,12 @@
 import ipaddress
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+virustotal_key = os.getenv("VIRUSTOTAL_API_KEY")
+abuseipdb_key = os.getenv("ABUSEIPDB_API_KEY")
 
 def getShodanIP(ip_str):
     url = f"https://internetdb.shodan.io/{ip_str}"
