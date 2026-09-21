@@ -22,6 +22,16 @@ def getShodanIP(ip_str):
     print("vulns: ", data["vulns"])
     print("---------------------")
 
+def getVirusTotalIP(ip_str):
+    url = f"https://www.virustotal.com/api/v3/ip_addresses/{ip_str}"
+
+    headers = {
+        "x-apikey":virustotal_key
+    }
+
+    response = requests.get(url, headers=headers)
+    data = response.json()
+    print(data)
 
 def is_valid_ip(ip_str):
     try:
@@ -35,7 +45,7 @@ def main():
     validIP = is_valid_ip(ip_str)
 
     if validIP:
-        getShodanIP(ip_str)
+        getVirusTotalIP(ip_str)
 
 if __name__ == "__main__":
     main()
