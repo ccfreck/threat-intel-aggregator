@@ -51,6 +51,18 @@ def getVirusTotalIP(ip_str):
     print("Tags:", attributes["tags"])
     print("-------------------------")
 
+def getAbuseIPDB(ip_str):
+    url = "https://api.abuseipdb.com/api/v2/check"
+
+    headers = {
+        "Key": abuseipdb_key,
+        "Accept": "application/json"
+    }
+
+    response = requests.get(url, headers=headers, params={"ipAddress": ip_str})
+    data = response.json()
+    print(data)
+
 # try/catch to determine if the ip is valid using ipaddress package
 def is_valid_ip(ip_str):
     try:
@@ -64,7 +76,7 @@ def main():
     validIP = is_valid_ip(ip_str)
 
     if validIP:
-        getVirusTotalIP(ip_str)
+        getAbuseIPDB(ip_str)
 
 if __name__ == "__main__":
     main()
