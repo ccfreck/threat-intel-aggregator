@@ -61,7 +61,15 @@ def getAbuseIPDB(ip_str):
 
     response = requests.get(url, headers=headers, params={"ipAddress": ip_str})
     data = response.json()
-    print(data)
+    attributes = data["data"]
+    print("-----ABUSEIPDB DATA-----")
+    print("IP:", attributes["ipAddress"])
+    print("Abuse Confidence Score:", attributes["abuseConfidenceScore"])
+    print("ISP:", attributes["isp"])
+    print("Hostnames:", attributes["hostnames"])
+    print("Total Reports:", attributes["totalReports"])
+    print("Last Reported:", attributes["lastReportedAt"])
+    print("------------------------")
 
 # try/catch to determine if the ip is valid using ipaddress package
 def is_valid_ip(ip_str):
