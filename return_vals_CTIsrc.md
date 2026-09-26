@@ -1,7 +1,10 @@
-After calling each API function, main() creates one dictionary containing the results:
+After calling each API function, `main()` creates one dictionary containing the results:
 
+```python
 shodan_data = getShodanIP(ip_str)
+
 virustotal_data = getVirusTotalIP(ip_str)
+
 abuseipdb_data = getAbuseIPDB(ip_str)
 
 report = {
@@ -10,9 +13,11 @@ report = {
     "virustotal": virustotal_data,
     "abuseipdb": abuseipdb_data
 }
+```
 
 The structure looks like:
 
+```text
 report
 │
 ├── ip
@@ -44,13 +49,19 @@ report
     ├── hostnames
     ├── totalReports
     └── lastReportedAt
-
+```
 
 Validating each threat intel source's return val:
 
 SHODAN:
+
+```python
 return response.json()
+```
+
 i.e.,
+
+```json
 {
     "ip": "8.8.8.8",
     "ports": [53, 443],
@@ -59,10 +70,19 @@ i.e.,
     "tags": [],
     "vulns": []
 }
+```
 
 VIRUS_TOTAL:
-return response.json()["data"]["attributes"] to get meaningful values.
+
+```python
+return response.json()["data"]["attributes"]
+```
+
+to get meaningful values.
+
 i.e.,
+
+```json
 {
     "data": {
         "type": "ip_address",
@@ -85,10 +105,17 @@ i.e.,
         }
     }
 }
+```
 
-ABUSEIPDB
+ABUSEIPDB:
+
+```python
 return response.json()["data"]
+```
+
 i.e.,
+
+```json
 {
     "data": {
         "ipAddress": "8.8.8.8",
@@ -99,3 +126,4 @@ i.e.,
         "lastReportedAt": None
     }
 }
+```
