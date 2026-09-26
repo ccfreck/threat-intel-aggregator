@@ -91,6 +91,14 @@ def main():
         vt_data = getVirusTotalIP(ip_str)
         shodan_data = getShodanIP(ip_str)
 
+        report = {
+            "ip": ip_str,
+            "shodan": shodan_data,
+            "virustotal": vt_data,
+            "abuseipdb":abuseipdb_data
+        }
+        print(report)
+
 if __name__ == "__main__":
     main()
 
