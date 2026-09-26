@@ -23,6 +23,7 @@ def getShodanIP(ip_str):
     print("tags: ", data["tags"])
     print("vulns: ", data["vulns"])
     print("---------------------")
+    return data
 
 # VT get json response, parse meaningful data
 def getVirusTotalIP(ip_str):
@@ -50,6 +51,7 @@ def getVirusTotalIP(ip_str):
     print("Last Analysis:", attributes["last_analysis_date"])
     print("Tags:", attributes["tags"])
     print("-------------------------")
+    return data["data"]
 
 def getAbuseIPDB(ip_str):
     url = "https://api.abuseipdb.com/api/v2/check"
@@ -70,6 +72,7 @@ def getAbuseIPDB(ip_str):
     print("Total Reports:", attributes["totalReports"])
     print("Last Reported:", attributes["lastReportedAt"])
     print("------------------------")
+    return data["data"]
 
 # try/catch to determine if the ip is valid using ipaddress package
 def is_valid_ip(ip_str):
@@ -84,7 +87,9 @@ def main():
     validIP = is_valid_ip(ip_str)
 
     if validIP:
-        getAbuseIPDB(ip_str)
+        abuseipdb_data = getAbuseIPDB(ip_str)
+        vt_data = getVirusTotalIP(ip_str)
+        shodan_data = getShodanIP(ip_str)
 
 if __name__ == "__main__":
     main()
