@@ -21,8 +21,7 @@ git clone https://github.com/yourusername/threat-intel-aggregator.git
 cd threat-intel-aggregator
 pip install -r requirements.txt
 ```
-Configuration
-Create a .env file in the project root:
+Configuration - create a .env file in the project root:
 ```bash
 VIRUSTOTAL_API_KEY=your_virustotal_api_key
 ABUSEIPDB_API_KEY=your_abuseipdb_api_key
