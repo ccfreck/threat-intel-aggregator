@@ -105,6 +105,8 @@ def printReport(report):
 
     print("\n================================================")
 
+# def threatReporter(report from main)
+
 # try/catch to determine if the ip is valid using ipaddress package
 def is_valid_ip(ip_str):
     try:
